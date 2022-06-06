@@ -1,0 +1,230 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 12.1' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      8240,        220]
+NotebookOptionsPosition[      7509,        197]
+NotebookOutlinePosition[      7906,        213]
+CellTagsIndexPosition[      7863,        210]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["n - kotniki", "Title",
+ CellChangeTimes->{{3.8577176192173114`*^9, 
+  3.8577176246457443`*^9}},ExpressionUUID->"05a4cccd-72fd-4c11-872a-\
+c3a5a0b63b6a"],
+
+Cell[CellGroupData[{
+
+Cell["Naloga 1", "Chapter",
+ CellChangeTimes->{{3.857717630804495*^9, 
+  3.857717634651064*^9}},ExpressionUUID->"a1828801-bbdc-4fc8-b58f-\
+dc8320067162"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"PopraviKot", "[", "a_", "]"}], ":=", 
+   RowBox[{"If", "[", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", "Pi"}], "<", "a", "\[LessEqual]", "Pi"}], ",", 
+     "\[IndentingNewLine]", "a", ",", "\[IndentingNewLine]", 
+     RowBox[{"If", "[", "\[IndentingNewLine]", 
+      RowBox[{
+       RowBox[{"a", ">", "Pi"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"PopraviKot", "[", 
+        RowBox[{"a", "-", 
+         RowBox[{"2", "Pi"}]}], "]"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"PopraviKot", "[", 
+        RowBox[{"a", "+", 
+         RowBox[{"2", "Pi"}]}], "]"}]}], "\[IndentingNewLine]", "]"}]}], 
+    "\[IndentingNewLine]", "]"}]}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"koordinate", "[", 
+     RowBox[{"n_", ",", "a_", ",", "r_"}], "]"}], ":=", 
+    RowBox[{"Map", "[", "\[IndentingNewLine]", 
+     RowBox[{"FromPolarCoordinates", ",", "\[IndentingNewLine]", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{"r", ",", 
+          RowBox[{"PopraviKot", "[", 
+           RowBox[{"Pi", "-", 
+            RowBox[{"k", "*", "2", 
+             RowBox[{"Pi", "/", "n"}]}], "+", "a"}], "]"}]}], "}"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"{", 
+         RowBox[{"k", ",", "0", ",", 
+          RowBox[{"n", "-", "1"}]}], "}"}]}], "]"}]}], "\[IndentingNewLine]", 
+     "]"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"koordinateZaCrte", "[", 
+     RowBox[{"n_", ",", "a_", ",", "r_"}], "]"}], ":=", "\[IndentingNewLine]", 
+    RowBox[{"Append", "[", 
+     RowBox[{
+      RowBox[{"koordinate", "[", 
+       RowBox[{"n", ",", "a", ",", "r"}], "]"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"First", "[", 
+       RowBox[{"koordinate", "[", 
+        RowBox[{"n", ",", "a", ",", "r"}], "]"}], "]"}]}], "]"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"NKotnik", "[", 
+     RowBox[{"n_", ",", "a_", ",", "r_"}], "]"}], ":=", 
+    RowBox[{"Graphics", "[", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{"Point", "[", 
+         RowBox[{"koordinate", "[", 
+          RowBox[{"n", ",", "a", ",", "r"}], "]"}], "]"}], ",", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Line", "[", 
+         RowBox[{"koordinateZaCrte", "[", 
+          RowBox[{"n", ",", "a", ",", "r"}], "]"}], "]"}]}], 
+       "\[IndentingNewLine]", "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "10"}], ",", "10"}], "}"}], ",", 
+         RowBox[{"{", 
+          RowBox[{
+           RowBox[{"-", "10"}], ",", "10"}], "}"}]}], "}"}]}]}], "]"}]}], 
+   ";"}], "\[IndentingNewLine]", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"PlotRange", "--"}], ">", "1"}], ",", " ", 
+    RowBox[{
+    "da", " ", "se", " ", "lik", " ", "ne", " ", "ve\[CHacek]a", " ", "in", 
+     " ", "manj\[SHacek]a", " ", "ko", " ", "ga", " ", "obra\[CHacek]amo"}]}],
+    "*)"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"NKotnik", "[", 
+    RowBox[{"n", ",", "a", ",", "r"}], "]"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"n", ",", "3", ",", "42", ",", "1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"a", ",", "0", ",", 
+     RowBox[{"2", "Pi"}]}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"r", ",", "1", ",", "10"}], "}"}]}], "\[IndentingNewLine]", 
+  "]"}]}], "Input",
+ CellChangeTimes->CompressedData["
+1:eJxTTMoPSmViYGAQBWIQreH5MIR53xtHFlGZMBBd5lgYA6KXOFaB6UXb3qWA
+aKtbljkgelr/iQIQPcvmThGIvvezohJER4mL1ILodfECnSA6nG3zVBCde+7z
+AhB97PP+RSC6x3jqShBtc/fVarD6202bQbRP37EtIPrWjp1HQbTKRIdzIDpa
+Q+Y2iL42hecViObasf4riD7xZ/EfEB0iuDKQBUi/zNkbA6LPNfpkgmiJVS3F
+IDoupaAKRG9dc6EVRF8ILpwKoqec0ZoJoq8xuK8C0aczkjaDaJeEjftAdIH+
+8wMg+knQqRMgmrF80jkQ/fHfv8sg+mam52MQ/S835DWI9vrt/xZEAwAjF67+
+
+  "],
+ CellLabel->"In[70]:=",ExpressionUUID->"52da6e49-e1b7-4376-bc0b-13c279311017"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`a$$ = 0., $CellContext`n$$ = 
+    3, $CellContext`r$$ = 1., Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{
+      Hold[$CellContext`n$$], 3, 42, 1}, {
+      Hold[$CellContext`a$$], 0, 2 Pi}, {
+      Hold[$CellContext`r$$], 1, 10}}, Typeset`size$$ = {360., {177., 183.}}, 
+    Typeset`update$$ = 0, Typeset`initDone$$, Typeset`skipInitDone$$ = True}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`a$$ = 0, $CellContext`n$$ = 
+        3, $CellContext`r$$ = 1}, "ControllerVariables" :> {}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> $CellContext`NKotnik[$CellContext`n$$, $CellContext`a$$, \
+$CellContext`r$$], 
+      "Specifications" :> {{$CellContext`n$$, 3, 42, 1}, {$CellContext`a$$, 0,
+          2 Pi}, {$CellContext`r$$, 1, 10}}, "Options" :> {}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{411., {252., 258.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{
+  3.8577181693249073`*^9, 3.8577183875226364`*^9, 3.8577184491558404`*^9, 
+   3.8577186959002485`*^9, 3.8577188922667727`*^9, 3.857719226006843*^9, 
+   3.857719275704424*^9, 3.857719341681465*^9, 3.857720425100331*^9, {
+   3.85772049484968*^9, 3.8577205220874596`*^9}, 3.8577207317708254`*^9, {
+   3.8577208295108385`*^9, 3.8577208407162914`*^9}, 3.857720912666703*^9, {
+   3.857721061333001*^9, 3.857721114669154*^9}, 3.8577211991951275`*^9},
+ CellLabel->"Out[74]=",ExpressionUUID->"f243172b-ffde-4c1a-a4c2-5d7c46c0ba15"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{958, 988},
+WindowMargins->{{Automatic, -7}, {Automatic, 0}},
+FrontEndVersion->"12.1 for Microsoft Windows (64-bit) (June 19, 2020)",
+StyleDefinitions->"Default.nb",
+ExpressionUUID->"cfae6886-dfe8-4cc1-9902-14fe3352855a"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 158, 3, 97, "Title",ExpressionUUID->"05a4cccd-72fd-4c11-872a-c3a5a0b63b6a"],
+Cell[CellGroupData[{
+Cell[763, 29, 153, 3, 68, "Chapter",ExpressionUUID->"a1828801-bbdc-4fc8-b58f-dc8320067162"],
+Cell[CellGroupData[{
+Cell[941, 36, 4245, 110, 637, "Input",ExpressionUUID->"52da6e49-e1b7-4376-bc0b-13c279311017"],
+Cell[5189, 148, 2280, 44, 529, "Output",ExpressionUUID->"f243172b-ffde-4c1a-a4c2-5d7c46c0ba15"]
+}, Open  ]]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
+
